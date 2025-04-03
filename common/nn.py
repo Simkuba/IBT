@@ -32,13 +32,12 @@ class CNN(nn.Module):
             
             nn.Flatten(),
             nn.Linear(400, 120),
-            #nn.Dropout(0.2),
             nn.ReLU(),
         )
 
         self.projection = nn.Sequential(
             nn.Linear(120,120),
-            nn.Dropout(0.25),
+            #nn.Dropout(0.25),
             nn.ReLU(),
             nn.Linear(120,30),
             nn.Tanh()
