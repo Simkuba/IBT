@@ -1,2 +1,2 @@
 # IBT
-Bachelor theses - Network traffic classification using contrastive learning
+Bachelor thesis - Network traffic classification using contrastive learning
