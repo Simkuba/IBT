@@ -37,7 +37,39 @@ class CNN(nn.Module):
 
         self.projection = nn.Sequential(
             nn.Linear(120,120),
-            #nn.Dropout(0.25),
+            nn.ReLU(),
+            nn.Linear(120,30),
+            nn.Tanh()
+        )
+
+    def forward(self, x):
+        x = self.encoder(x)
+        x = self.projection(x)
+        x = F.normalize(x, p=2, dim=1)
+        return x
+    
+class CNN_64(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.encoder = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=6, kernel_size=5),
+            nn.BatchNorm2d(6),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            
+            nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5),
+            nn.BatchNorm2d(16),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            
+            nn.Flatten(),
+            nn.Linear(2704, 120),
+            nn.ReLU(),
+        )
+
+        self.projection = nn.Sequential(
+            nn.Linear(120,120),
             nn.ReLU(),
             nn.Linear(120,30),
             nn.Tanh()
