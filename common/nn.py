@@ -1,3 +1,9 @@
+'''
+
+This file defines the neural networks used.
+
+'''
+
 # -- IMPORTS --
 
 import os
@@ -14,11 +20,12 @@ import sys
 # sets csv limit
 csv.field_size_limit(sys.maxsize)
 
-# -- CNN architecture --     
+# -- CNN architecture for 32x32 FlowPics --     
 class CNN(nn.Module):
     def __init__(self):
         super().__init__()
 
+        # encoder f()
         self.encoder = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=6, kernel_size=5),
             nn.BatchNorm2d(6),
@@ -35,6 +42,7 @@ class CNN(nn.Module):
             nn.ReLU(),
         )
 
+        # projection head g()
         self.projection = nn.Sequential(
             nn.Linear(120,120),
             nn.ReLU(),
@@ -48,10 +56,12 @@ class CNN(nn.Module):
         x = F.normalize(x, p=2, dim=1)
         return x
     
+# -- CNN architecture for 64x64 FlowPics --     
 class CNN_64(nn.Module):
     def __init__(self):
         super().__init__()
 
+        # encoder f()
         self.encoder = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=6, kernel_size=5),
             nn.BatchNorm2d(6),
@@ -68,6 +78,7 @@ class CNN_64(nn.Module):
             nn.ReLU(),
         )
 
+        # projection head g()
         self.projection = nn.Sequential(
             nn.Linear(120,120),
             nn.ReLU(),
@@ -81,7 +92,7 @@ class CNN_64(nn.Module):
         x = F.normalize(x, p=2, dim=1)
         return x
     
-# -- fine tuning using linear classifier --
+# -- fine tuning using linear classifier (also called classification head) --
 class MLP(nn.Module):
     def __init__(self, output_size: int, input_size=120):
         super().__init__()

@@ -1,3 +1,9 @@
+'''
+
+This file contains custom version of FlowMind dataloader and support functions.
+
+'''
+
 # -- IMPORTS --
 
 import os
@@ -26,6 +32,17 @@ from pathlib import Path
 from datetime import timedelta
 
 def calculate_length(flow: FlowData, threshold: int) -> bool:
+    '''
+    Calculates length of the flow and return True or False if the flow 
+    is above threshold or not.
+
+    Args:
+        flow: The flow in FlowData format.
+        threshold: Threshold.
+
+    Returns:
+        True if the length is at least the threshold value. False otherwise.
+    '''
     return (flow.times[-1] - flow.times[0]) >= timedelta(threshold)
 
 # -- custom dataloader creating function --
@@ -61,12 +78,14 @@ def create_flowpic_dataloader(
         bidirectional (bool, optional): Whether to use bidirectional flowpic. Defaults to False.
         meta_key (str | list[str] | None, optional): Target column name. Defaults to None.
         dp_transform(DataPipeTransform, optional): Datapipe transform function. Defaults to identity.
-        flow_transform(FlowDataTransform, optional): Flow transform function. Defaults to identity.
+        flow_transform1(FlowDataTransform, optional): Flow transform function. Defaults to identity.
+        flow_transform2(FlowDataTransform, optional): Flow transform function. Defaults to identity.
 
     Returns:
         torch.utils.data.DataLoader: Torch DataLoader.
     """
 
+    # pipeline
     dp = (
         FileLister(str(dir_path))
         .filter(filter_csv_filename)
@@ -92,23 +111,7 @@ def create_flowpic_dataloader(
         )
     )
 
-    '''
-    dp = dp.map(
-        partial(
-            build_two_augmented_flows,
-            flow_transform_1=flow_transform_1,
-            flow_transform_2=flow_transform_2,
-            time_bins=time_bins,
-            length_bins=length_bins,
-            ppi_bins=ppi_bins,
-            normalize=normalize,
-            bidirectional=bidirectional,
-            meta_key=meta_key,
-            scaler=scaler,
-        )
-    )
-    '''
-
+    # for label transform (in this work)
     dp = dp_transform(dp)
 
     return torch.utils.data.DataLoader(dp.batch(batch_size).collate(), batch_size=None, num_workers=num_workers)
@@ -127,6 +130,21 @@ def build_two_augmented_flows(
 ):
     """
     Creates (flowpic1, flowpic2, label) from (row1, row2).
+
+    Args:
+        pair_of_rows: tuple of duplicated rows (views)
+        scaler (Mapping[str, Scaler] | None, optional): Data scaler to apply. Defaults to None.
+        time_bins (list, optional): Time bins. Defaults to [0, 37.5, 75.0, 112.5, 150.0, 187.5, 225.0, 262.5, 300.0].
+        length_bins (list, optional): Packet size bins. Defaults to [0, 187.5, 375.0, 562.5, 750.0, 937.5, 1125.0, 1312.5, 1500.0].
+        ppi_bins (list | None, optional): PPI bins. Defaults to None.
+        normalize (bool, optional): Whether to normalize packets in bins instead of absolute counts. Defaults to False.
+        bidirectional (bool, optional): Whether to use bidirectional flowpic. Defaults to False.
+        meta_key (str | list[str] | None, optional): Target column name. Defaults to None.
+        flow_transform1(FlowDataTransform, optional): Flow transform function. Defaults to identity.
+        flow_transform2(FlowDataTransform, optional): Flow transform function. Defaults to identity.
+
+    Returns:
+        FlowPic1, FlowPic2 and corresponding label.
     """
     row1, row2 = pair_of_rows
 
@@ -156,6 +174,7 @@ def build_two_augmented_flows(
     )
     out2 = flow2.export(scaler=scaler)
 
+    # remove duplicate label
     fp1, label = out1    
     fp2, _ = out2
 

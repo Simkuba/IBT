@@ -1,3 +1,9 @@
+'''
+
+This file contains functions for data (flow) augmentations.
+
+'''
+
 # -- IMPORTS --
 
 import os

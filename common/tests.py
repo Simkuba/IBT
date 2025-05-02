@@ -1,3 +1,9 @@
+'''
+
+This file contains test functions used for this project.
+
+'''
+
 # -- IMPORTS --
 
 import os
