@@ -2,6 +2,8 @@
 
 This file contains functions for data (flow) augmentations.
 
+Author: Jakub Čoček (xcocek00)
+
 '''
 
 # -- IMPORTS --

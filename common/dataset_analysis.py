@@ -2,6 +2,8 @@
 
 This file contains functions used for dataset analysis
 
+Author: Jakub Čoček (xcocek00)
+
 '''
 
 import csv

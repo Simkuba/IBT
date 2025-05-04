@@ -2,6 +2,8 @@
 
 This file defines the neural networks used.
 
+Author: Jakub Čoček (xcocek00)
+
 '''
 
 # -- IMPORTS --

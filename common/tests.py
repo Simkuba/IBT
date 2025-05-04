@@ -2,6 +2,8 @@
 
 This file contains test functions used for this project.
 
+Author: Jakub Čoček (xcocek00)
+
 '''
 
 # -- IMPORTS --

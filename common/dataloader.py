@@ -2,6 +2,8 @@
 
 This file contains custom version of FlowMind dataloader and support functions.
 
+Author: Jakub Čoček (xcocek00)
+
 '''
 
 # -- IMPORTS --
