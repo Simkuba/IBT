@@ -10,8 +10,7 @@ Před spuštěním Jupyter notebooků a trénováním modelu je nutné nainstalo
 pip install -r requirements.txt
 ```
 
-Knihovna FlowMind, která je pro správné fungování modelu esenciální se ovšem v těchto závislostech nevyskytuje, jelikož je stále vyvíjena skupinou NES@FIT a není tedy veřejná. Model byl proto původně trénován na serveru grace na FIT VUT, kde byla knihovna
-FlowMind k dispozici. Odevzdaný notebooky jsou upravené tak, aby je bylo možné spustit i lokálně v případě, že je FlowMind knihovna k dispozici.
+Knihovna FlowMind, která je pro správné fungování modelu esenciální se ovšem v těchto závislostech nevyskytuje, jelikož je stále vyvíjena skupinou NES@FIT a není tedy veřejná. Model byl proto původně trénován na serveru grace na FIT VUT, kde byla knihovna k dispozici. Odevzdané notebooky jsou upravené tak, aby je bylo možné spustit i lokálně v případě, že je FlowMind knihovna k dispozici.
 
 ---
 
