@@ -9,7 +9,8 @@ Author: Jakub Čoček (xcocek00)
 # -- IMPORTS --
 
 import os
-os.chdir('/workplace/flowmind/')
+path_to_module = os.path.abspath(os.path.join('..', 'flowmind'))
+sys.path.append(path_to_module)
 
 # torch imports
 import torchvision.transforms as T

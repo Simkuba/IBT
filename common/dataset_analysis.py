@@ -10,7 +10,9 @@ import csv
 import os
 from datetime import timedelta
 
-os.chdir('/workplace/flowmind/')
+path_to_module = os.path.abspath(os.path.join('..', 'flowmind'))
+sys.path.append(path_to_module)
+
 from flowmind.processing.dataloaders.common import (
     filter_min_flow_length,
     parse_timestamps,
