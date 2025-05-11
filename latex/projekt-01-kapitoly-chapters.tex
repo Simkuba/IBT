@@ -758,9 +758,9 @@ Jak již bylo zmíněno, hodnoty nelze přímo porovnávat, je ovšem patrné, �
 
 Ze výsledných hodnot je patrné, že učení s~učitelem je pro datovou sadu Mirage19 výrazně vhodnější než kontrastivní přístup. Hlavním důvodem je již zmíněná struktura toků, která není pro kombinaci kontrastivního učení a~FlowPic reprezentace příliš vhodná.
 
-\subsection{Ucdavis-icmd19}
+\subsection{Ucdavis-icdm19}
 \label{ucdavis_results}
-Datová sada Ucdavis-icmd19 dosahovala velmi dobrých výsledků v~obou referenčních pracích~\cite{flowpic_augmentations, huawei_paper}. Výsledky dosažené v~této práci lze přímo porovnat jak s~originální studií~\cite{flowpic_augmentations}, tak s~její replikací~\cite{huawei_paper}, jelikož obě tyto práce využívají danou datovou sadu i~pro kontrastivní učení.
+Datová sada Ucdavis-icdm19 dosahovala velmi dobrých výsledků v~obou referenčních pracích~\cite{flowpic_augmentations, huawei_paper}. Výsledky dosažené v~této práci lze přímo porovnat jak s~originální studií~\cite{flowpic_augmentations}, tak s~její replikací~\cite{huawei_paper}, jelikož obě tyto práce využívají danou datovou sadu i~pro kontrastivní učení.
 
 Z~nalýzy této datové sady, uvedené v~tabulce~\ref{ucdavis_analysis}, vyplývá, že průměrná délka toku není nijak zvlášť vysoká. Díky vysokému průměrnému počtu paketů na tok je však datová sada ideální pro tvorbu FlowPic reprezentací, což je ukázáno na~\ref{ucd_flowpics}. Tyto reprezentace jsou tzv. velmi bohaté, což modelu výrazně usnadňuje schopnost data generalizovat, na rozdíl od jiných datových sad, jako například Mirage19 nebo Mirage22.
 
@@ -768,7 +768,7 @@ Z~nalýzy této datové sady, uvedené v~tabulce~\ref{ucdavis_analysis}, vyplýv
     \centering
     \begin{tabular}{lcccc}
         \toprule
-          & \multicolumn{2}{c}{\textbf{Ucdavis-icmd19}} \\
+          & \multicolumn{2}{c}{\textbf{Ucdavis-icdm19}} \\
           \cmidrule(lr){2-3}
          \textbf{Test set} & script & human \\
         \midrule
@@ -778,7 +778,7 @@ Z~nalýzy této datové sady, uvedené v~tabulce~\ref{ucdavis_analysis}, vyplýv
         \textbf{FlowPic rotace} & 96,40{\tiny\textcolor{gray}{$\pm$ 0,60}} & \textbf{77,59}{\tiny\textcolor{gray}{$\pm$ 1,37}} \\
         \bottomrule
     \end{tabular}
-    \caption{Dosažené výsledky u~datové sady Ucdavis-icmd19.}
+    \caption{Dosažené výsledky u~datové sady Ucdavis-icdm19.}
 \end{table}
 
 Lze pozorovat rozdílnou přesnost mezi testovací sadou \textit{script} a~\textit{human}. Důvodem pro tento rozdíl je s~nejvyšší pravděpodobností způsob, kterým byly tyto sady vytvořeny. Zatímco sada \textit{script} je generována automaticky, sada \textit{human} zachycuje provoz reálných uživatelů. Z~toho důvodu je provoz méně předpovídatelný a~obsahuje více šumu. 
@@ -856,7 +856,7 @@ Výsledky jsou rovnou také porovnány s modely, které byly čistě trénované
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{lccccccc}
             \toprule
-              & \multicolumn{2}{c}{\textbf{Ucdavis-icmd19}}  \\
+              & \multicolumn{2}{c}{\textbf{Ucdavis-icdm19}}  \\
               \cmidrule(lr){2-3}
              \textbf{Test set} & \textbf{script} & \textbf{human} & \textbf{Mirage19} & \textbf{Mirage22} & \textbf{UTMobileNetTraffic2021} \\
             \midrule
@@ -902,7 +902,7 @@ Dosažené výsledky lze porovnat s~menší variantou FlowPic reprezentací $32\
     \centering
     \begin{tabular}{lcccccc}
         \toprule
-          & \multicolumn{4}{c}{\textbf{Ucdavis-icmd19}} \\
+          & \multicolumn{4}{c}{\textbf{Ucdavis-icdm19}} \\
           \cmidrule(lr){2-5}
          & \multicolumn{2}{c}{FlowPic $32\times32$} & \multicolumn{2}{c}{FlowPic $64\times64$} \\
          \cmidrule(lr){2-3} \cmidrule(lr){4-5}
@@ -914,7 +914,7 @@ Dosažené výsledky lze porovnat s~menší variantou FlowPic reprezentací $32\
         \textbf{FlowPic rotace} & 96,40{\tiny\textcolor{gray}{$\pm$ 0,60}} & \textbf{77,59}{\tiny\textcolor{gray}{$\pm$ 1,37}} & 96,53{\tiny\textcolor{gray}{$\pm$ 0,87}} & 71,08{\tiny\textcolor{gray}{$\pm$ 2,41}} \\
         \bottomrule
     \end{tabular}
-    \caption{Porovnání výsledků různých velikostí FlowPic reprezentací na datové sadě Ucdavis-icmd19.}
+    \caption{Porovnání výsledků různých velikostí FlowPic reprezentací na datové sadě Ucdavis-icdm19.}
 \end{table}
 
 Ze srovnání je patrné, že větší varianty FlowPic reprezentací v~naprosté většině případů dosahují lepších výsledků na testovací sadě \textit{script} než menší varianta. Naopak u~sady \textit{human} dosahuje model lepších výsledků při použití menších FlowPiců o~velikosti $32\times32$. Větší reprezentace zároveň obsahují více prázdných (nulových) oblastí ve výsledném FlowPicu, což s~největší pravděpodobností snižuje účinnost augmentace formou vynechávání paketů. Tuto skutečnost potvrzují i~dosažené výsledky. 
@@ -928,7 +928,7 @@ Porovnání dosažených výsledků s~referenčními pracemi není zcela přesn�
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{lcccccccc}
             \toprule
-              & \multicolumn{6}{c}{\textbf{Ucdavis-icmd19}} \\
+              & \multicolumn{6}{c}{\textbf{Ucdavis-icdm19}} \\
               \cmidrule(lr){2-7}
              & \multicolumn{2}{c}{Tato práce} & \multicolumn{2}{c}{Výsledky z~\cite{flowpic_augmentations}} & \multicolumn{2}{c}{Výsledky z~\cite{huawei_paper}} \\
              \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
@@ -954,6 +954,6 @@ Cílem této bakalářské práce byla replikace výsledků dosažených v~refer
 
 Specifikem navrženého řešení je reprezentace síťového toku ve formě dvourozměrného histogramu nazývaného FlowPic, respektive její zmenšené verze mini FlowPic, která umožňuje aplikovat metody strojového učení původně určené pro klasifikaci obrazových dat. Jedním z~takových přístupů je metoda SimCLR. Navržený model neuronové sítě vychází z~architektury LeNet-5 a~byl upraven tak, aby co nejvěrněji odpovídal modelům použitým v~referenčních studiích, což umožňuje co nejpřesnější porovnání dosažených výsledků. K~implementaci neuronové sítě byl použit jazyk Python a~knihovna PyTorch, zatímco pro načítání dat sloužila knihovna FlowMind, vyvíjená na Fakultě informačních technologií Vysokého učení technického v~Brně.
 
-Na referenční datové sadě Ucdavis-icmd19 se podařilo výsledky úspěšně replikovat a~dokonce dosáhnout vyšší přesnosti modelu na testovací sadě \textit{script} v~porovnání s~výsledky uvedenými v~obou referenčních pracích. Model byl následně otestován i~na dalších datových sadách, které původní práce buď vůbec nevyužívají, nebo k~trénování modelů používají odlišné přístupy učení. Z~těchto důvodů nelze výsledky přímo porovnávat, nicméně ze srovnání vyplývá, že kontrastivní učení v~kombinaci s~reprezentací toku pomocí FlowPic obecně dosahuje horších výsledků než standardní učení s~učitelem. Podobně byly otestovány také větší verze mini FlowPic reprezentací a~následně porovnány s~výsledky dosaženými učením s~učitelem.
+Na referenční datové sadě Ucdavis-icdm19 se podařilo výsledky úspěšně replikovat a~dokonce dosáhnout vyšší přesnosti modelu na testovací sadě \textit{script} v~porovnání s~výsledky uvedenými v~obou referenčních pracích. Model byl následně otestován i~na dalších datových sadách, které původní práce buď vůbec nevyužívají, nebo k~trénování modelů používají odlišné přístupy učení. Z~těchto důvodů nelze výsledky přímo porovnávat, nicméně ze srovnání vyplývá, že kontrastivní učení v~kombinaci s~reprezentací toku pomocí FlowPic obecně dosahuje horších výsledků než standardní učení s~učitelem. Podobně byly otestovány také větší verze mini FlowPic reprezentací a~následně porovnány s~výsledky dosaženými učením s~učitelem.
 
 Model byl také trénován na reálném provozu, který byl zachycen sdružením CESNET a~poté testován na zbývajících datových sadách. Pomocí tohoto modelu se podařilo experimentálně dosáhnout nejvyšší přesnosti v~této práci.
