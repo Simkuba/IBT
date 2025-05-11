@@ -33,8 +33,8 @@ Odevzdané soubory jsou organizovány následovně:
 - mirage22 - Obsahuje modely trénované na datové sadě Mirage22 a podsložky dle zvolené augmentace.
 - ucdavis - Obsahuje modely trénované na datové sadě Ucdavis-icdm19 a podsložky dle zvolené augmentace a testovací části datasetu.
 - utmobilenet21 - Obsahuje modely trénované na datové sadě UTMobileNetTraffic2021 a podsložky dle zvolené augmentace.
-- datasets.py - Skript pro analýzu datových sad.
-- flowpics.py - Skript pro vytváření vizuálních FlowPic reprezentací.
+- datasets.ipynb - Notebbok pro analýzu datových sad.
+- flowpics.ipynb - Notebook pro vytváření vizuálních FlowPic reprezentací.
 
 Detailní popis obsahu obsahující většinu souborů:
 ```
