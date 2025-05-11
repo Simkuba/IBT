@@ -13,6 +13,16 @@ pip install -r requirements.txt
 Knihovna FlowMind, která je pro správné fungování modelu esenciální je stále vyvíjena na FIT VUT a není tedy veřejná. Model byl proto původně trénován na fakultním serveru grace, kde byla knihovna k dispozici. Odevzdané notebooky jsou upravené tak, aby je bylo možné spustit lokálně v případě, že je FlowMind knihovna k dispozici.
 
 ---
+### Spuštění
+
+Jelikož tato práce využívá převážně Jupyter notebooky, je pro jejich spuštění nejprve nutné spustit samotné prostředí pomocí příkazu:
+```
+jupyter notebook
+```
+
+Tímto příkazem se otevře rozhraní Jupyteru ve webovém prohlížeči (standardně na adrese ```http://localhost:8888```). Pokud se stránka neotevře automaticky, zobrazí se v terminálu adresa s autentizačním tokenem, kterou lze ručně zkopírovat do prohlížeče (```http://localhost:8888/tree?token=...```).
+
+---
 
 ### Struktura odevzdaných souborů
 
